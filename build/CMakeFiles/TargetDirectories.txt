@@ -1,0 +1,3 @@
+/home/misaki/Documents/sa/build/CMakeFiles/Static-Analysis.dir
+/home/misaki/Documents/sa/build/CMakeFiles/edit_cache.dir
+/home/misaki/Documents/sa/build/CMakeFiles/rebuild_cache.dir

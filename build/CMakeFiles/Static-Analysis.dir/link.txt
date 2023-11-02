@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Static-Analysis.dir/src/main.cpp.o -o Static-Analysis 

@@ -1,25 +1,7 @@
 #pragma once
 
 #include <vector>
-// Define two struct: "VarEmbedding"  "FuncEmbedding"
 
-// Struct to represent the variable's characteristics
-struct VarEmbedding {
-    int Def;       // Number of times the variable is defined/redefined
-    int Use;       // Number of times the variable is used
-    int Ptrs;      // Number of aliases the variable has
-    int Cfunc;     // Number of functions calling this variable
-    int Dvars;     // Number of variables that depend on this variable (optional)
-
-    // Constructor to initialize values
-    VarEmbedding(int def = 0, int use = 0, int ptrs = 0, int cfunc = 0, int dvars = 0)
-        : Def(def), Use(use), Ptrs(ptrs), Cfunc(cfunc), Dvars(dvars) {}
-
-    // Overloaded operator+ to add two VarEmbedding
-    VarEmbedding operator+(const VarEmbedding& other) const {
-        return { Def + other.Def, Use + other.Use, Ptrs + other.Ptrs, Cfunc + other.Cfunc, Dvars + other.Dvars };
-    }
-};
 
 // Struct to represent function's characteristics
 struct FuncEmbedding {

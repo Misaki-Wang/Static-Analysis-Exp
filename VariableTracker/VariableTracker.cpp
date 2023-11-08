@@ -15,10 +15,10 @@ static void printVariableTrackerResult(llvm::raw_ostream &, const std::map<llvm:
 //-----------------------------------------------------------------------------
 // VariableTrackerPass实现部分
 //-----------------------------------------------------------------------------
-llvm::AnalysisKey VariableTrackerPass::Key; // 创建一个全局分析密钥
-// 运行变量跟踪分析pass的函数
-llvm::PreservedAnalyses VariableTrackerPass::run(llvm::Function &F, llvm::FunctionAnalysisManager &FAM)
-{
+AnalysisKey VariableTracker::Key; // 创建一个全局分析密钥
+
+// 生成映射的函数
+VariableTracker::Result VariableTracker::generateVariableMap(Function &F, FunctionAnalysisManager &FAM){
     // 首先，获取Alias Analysis的结果
     auto &AA = FAM.getResult<llvm::AAManager>(F);
 
@@ -98,27 +98,18 @@ llvm::PreservedAnalyses VariableTrackerPass::run(llvm::Function &F, llvm::Functi
 
       }
     }
+}
 
-    // // 输出结果
-    // for (const auto &VarPair : variables) {
-    //   llvm::Value *Var = VarPair.first;
-    //   const VariableInfo &Info = VarPair.second;
-    //   llvm::errs() << "Variable " << *Var << ": Def=" << Info.Def
-    //                << ", Use=" << Info.Use
-    //                << ", Ptrs=" << Info.Ptrs.size()
-    //                << ", Cfunc=" << Info.Cfunc.size()
-    //                << ", Dvars=" << Info.Dvars.size()
-    //                << "\n";
-    // }
-
-    // 如果您没有修改IR，返回PreservedAnalyses::all();
-    return llvm::PreservedAnalyses::all();
-  }
+// 运行变量跟踪分析pass的函数
+VariableTracker::Result VariableTracker::run(Function &F, FunctionAnalysisManager &FAM){ 
+  // 收集和返回分析结果
+  return generateVariableMap(F, FAM);
+}  
 
 // 运行VariableTrackerPrinter打印Pass的函数
 PreservedAnalyses VariableTrackerPrinter::run(Function &F, FunctionAnalysisManager &FAM) {
   // 我们需要从分析管理器中获取VariableTrackerPass的结果
-  auto &Vars = FAM.getResult<VariableTrackerPass>(F);
+  auto &Vars = FAM.getResult<VariableTracker>(F);
 
   // 打印分析的标题信息
   OS << "Printing analysis 'VariableTracker Pass' for function '" << F.getName() << "':\n";
@@ -159,7 +150,7 @@ llvm::PassPluginLibraryInfo getVariableTrackerPluginInfo() {
       // #3 注册VariableTracker作为一个分析pass，这样它就可以被VariableTrackerPrinter（或其他pass）请求其结果
       PB.registerAnalysisRegistrationCallback(
           [](FunctionAnalysisManager &FAM) {
-            FAM.registerPass([&] { return VariableTrackerPass(); });
+            FAM.registerPass([&] { return VariableTracker(); });
           });
       }
   };
@@ -194,8 +185,7 @@ static void printVariableTrackerResult(llvm::raw_ostream &OutS,
     const VariableInfo &Info = VarPair.second;
     OutS << format("%-20s %-10d %-10d %-10lu %-10lu %-10lu\n", 
                     Var->getName().str().c_str(),
-                    Info.Def, Info.Use, 
-                    Info.Ptrs.size(), Info.Cfunc.size(), Info.Dvars.size());
+                    Info.Def, Info.Use, Info.Ptrs.size(), Info.Cfunc.size(), Info.Dvars.size());
   }
 
   OutS << "-------------------------------------------------\n\n";

@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/misaki/Documents/sa/OpcodeCounter/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all:
+all: CMakeFiles/OpcodeCounter.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -75,6 +75,7 @@ clean: CMakeFiles/intrinsics_gen.dir/clean
 clean: CMakeFiles/omp_gen.dir/clean
 clean: CMakeFiles/acc_gen.dir/clean
 clean: CMakeFiles/RISCVTargetParserTableGen.dir/clean
+clean: CMakeFiles/OpcodeCounter.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -180,6 +181,32 @@ RISCVTargetParserTableGen: CMakeFiles/RISCVTargetParserTableGen.dir/rule
 CMakeFiles/RISCVTargetParserTableGen.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RISCVTargetParserTableGen.dir/build.make CMakeFiles/RISCVTargetParserTableGen.dir/clean
 .PHONY : CMakeFiles/RISCVTargetParserTableGen.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/OpcodeCounter.dir
+
+# All Build rule for target.
+CMakeFiles/OpcodeCounter.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpcodeCounter.dir/build.make CMakeFiles/OpcodeCounter.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpcodeCounter.dir/build.make CMakeFiles/OpcodeCounter.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/misaki/Documents/sa/OpcodeCounter/build/CMakeFiles --progress-num=1,2 "Built target OpcodeCounter"
+.PHONY : CMakeFiles/OpcodeCounter.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/OpcodeCounter.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/misaki/Documents/sa/OpcodeCounter/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/OpcodeCounter.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/misaki/Documents/sa/OpcodeCounter/build/CMakeFiles 0
+.PHONY : CMakeFiles/OpcodeCounter.dir/rule
+
+# Convenience name for target.
+OpcodeCounter: CMakeFiles/OpcodeCounter.dir/rule
+.PHONY : OpcodeCounter
+
+# clean rule for target.
+CMakeFiles/OpcodeCounter.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpcodeCounter.dir/build.make CMakeFiles/OpcodeCounter.dir/clean
+.PHONY : CMakeFiles/OpcodeCounter.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

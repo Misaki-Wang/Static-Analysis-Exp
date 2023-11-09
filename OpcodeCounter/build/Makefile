@@ -168,6 +168,43 @@ RISCVTargetParserTableGen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RISCVTargetParserTableGen.dir/build.make CMakeFiles/RISCVTargetParserTableGen.dir/build
 .PHONY : RISCVTargetParserTableGen/fast
 
+#=============================================================================
+# Target rules for targets named OpcodeCounter
+
+# Build rule for target.
+OpcodeCounter: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 OpcodeCounter
+.PHONY : OpcodeCounter
+
+# fast build rule for target.
+OpcodeCounter/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpcodeCounter.dir/build.make CMakeFiles/OpcodeCounter.dir/build
+.PHONY : OpcodeCounter/fast
+
+OpcodeCounter.o: OpcodeCounter.cpp.o
+.PHONY : OpcodeCounter.o
+
+# target to build an object file
+OpcodeCounter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpcodeCounter.dir/build.make CMakeFiles/OpcodeCounter.dir/OpcodeCounter.cpp.o
+.PHONY : OpcodeCounter.cpp.o
+
+OpcodeCounter.i: OpcodeCounter.cpp.i
+.PHONY : OpcodeCounter.i
+
+# target to preprocess a source file
+OpcodeCounter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpcodeCounter.dir/build.make CMakeFiles/OpcodeCounter.dir/OpcodeCounter.cpp.i
+.PHONY : OpcodeCounter.cpp.i
+
+OpcodeCounter.s: OpcodeCounter.cpp.s
+.PHONY : OpcodeCounter.s
+
+# target to generate assembly for a file
+OpcodeCounter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/OpcodeCounter.dir/build.make CMakeFiles/OpcodeCounter.dir/OpcodeCounter.cpp.s
+.PHONY : OpcodeCounter.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -180,6 +217,10 @@ help:
 	@echo "... acc_gen"
 	@echo "... intrinsics_gen"
 	@echo "... omp_gen"
+	@echo "... OpcodeCounter"
+	@echo "... OpcodeCounter.o"
+	@echo "... OpcodeCounter.i"
+	@echo "... OpcodeCounter.s"
 .PHONY : help
 
 

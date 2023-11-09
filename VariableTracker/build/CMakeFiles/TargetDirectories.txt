@@ -1,0 +1,7 @@
+/home/misaki/Documents/sa/VariableTracker/build/CMakeFiles/intrinsics_gen.dir
+/home/misaki/Documents/sa/VariableTracker/build/CMakeFiles/omp_gen.dir
+/home/misaki/Documents/sa/VariableTracker/build/CMakeFiles/acc_gen.dir
+/home/misaki/Documents/sa/VariableTracker/build/CMakeFiles/RISCVTargetParserTableGen.dir
+/home/misaki/Documents/sa/VariableTracker/build/CMakeFiles/VariableTracker.dir
+/home/misaki/Documents/sa/VariableTracker/build/CMakeFiles/edit_cache.dir
+/home/misaki/Documents/sa/VariableTracker/build/CMakeFiles/rebuild_cache.dir

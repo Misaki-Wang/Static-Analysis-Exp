@@ -98,6 +98,7 @@ VariableTracker::Result VariableTracker::generateVariableMap(Function &F, Functi
 
       }
     }
+    return variables;
 }
 
 // 运行变量跟踪分析pass的函数
@@ -134,7 +135,7 @@ llvm::PassPluginLibraryInfo getVariableTrackerPluginInfo() {
       PB.registerPipelineParsingCallback(
           [&](StringRef Name, FunctionPassManager &FPM,
               ArrayRef<PassBuilder::PipelineElement>) {
-            if (Name == "print<variable-tracker>") {
+            if (Name == "VariableTracker") {
               FPM.addPass(VariableTrackerPrinter(llvm::errs()));
               return true;
             }
@@ -167,9 +168,9 @@ extern "C" LLVM_ATTRIBUTE_WEAK ::llvm::PassPluginLibraryInfo llvmGetPassPluginIn
 //------------------------------------------------------------------------------
 static void printVariableTrackerResult(llvm::raw_ostream &OutS, 
                                        const std::map<llvm::Value*, VariableInfo> &Vars) {
-  OutS << "=================================================\n";
-  OutS << "LLVM-TUTOR: VariableTracker results\n";
-  OutS << "=================================================\n";
+  OutS << "======================================================================\n";
+  OutS << "Static-Analysis: VariableTracker results\n";
+  OutS << "======================================================================\n";
   const char *str1 = "VARIABLE";
   const char *str2 = "DEF";
   const char *str3 = "USE";
@@ -178,7 +179,7 @@ static void printVariableTrackerResult(llvm::raw_ostream &OutS,
   const char *str6 = "DVARS";
   OutS << format("%-20s %-10s %-10s %-10s %-10s %-10s\n", 
                   str1, str2, str3, str4, str5, str6);
-  OutS << "-------------------------------------------------\n";
+  OutS << "----------------------------------------------------------------------\n";
 
   for (const auto &VarPair : Vars) {
     const llvm::Value *Var = VarPair.first;
@@ -188,5 +189,5 @@ static void printVariableTrackerResult(llvm::raw_ostream &OutS,
                     Info.Def, Info.Use, Info.Ptrs.size(), Info.Cfunc.size(), Info.Dvars.size());
   }
 
-  OutS << "-------------------------------------------------\n\n";
+  OutS << "-----------------------------------------------------------------------\n\n";
 }

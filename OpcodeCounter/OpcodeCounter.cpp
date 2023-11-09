@@ -103,7 +103,7 @@ static void printOpcodeCounterResult(raw_ostream &OutS,
                                      const ResultOpcodeCounter &OpcodeMap) {
   OutS << "================================================="
                << "\n";
-  OutS << "LLVM-TUTOR: OpcodeCounter results\n";
+  OutS << "Static-Analysis: OpcodeCounter results\n";
   OutS << "=================================================\n";
   const char *str1 = "OPCODE";
   const char *str2 = "#TIMES USED";

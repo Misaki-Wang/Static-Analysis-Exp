@@ -33,8 +33,8 @@ int main1() {
 int func1(int argc, char ** argv)
 {
     int n, i, sum;
-    printf("Enter a positive number: ");
-    n = argv[1];
+    // printf("Enter a positive number: ");
+    n = 10;
     // n=10
     sum = 0;
     i = 1;    

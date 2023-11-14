@@ -1,7 +1,0 @@
-/home/misaki/Documents/sa/OpcodeCounter/build/CMakeFiles/intrinsics_gen.dir
-/home/misaki/Documents/sa/OpcodeCounter/build/CMakeFiles/omp_gen.dir
-/home/misaki/Documents/sa/OpcodeCounter/build/CMakeFiles/acc_gen.dir
-/home/misaki/Documents/sa/OpcodeCounter/build/CMakeFiles/RISCVTargetParserTableGen.dir
-/home/misaki/Documents/sa/OpcodeCounter/build/CMakeFiles/OpcodeCounter.dir
-/home/misaki/Documents/sa/OpcodeCounter/build/CMakeFiles/edit_cache.dir
-/home/misaki/Documents/sa/OpcodeCounter/build/CMakeFiles/rebuild_cache.dir

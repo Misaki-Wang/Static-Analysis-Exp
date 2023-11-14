@@ -3,8 +3,8 @@
 int main(int argc, char ** argv)
 {
     int n, i, sum;
-    printf("Enter a positive number: ");
-    n = argv[1];
+    // printf("Enter a positive number: ");
+    n = 10;
     sum = 0;
     i = 1;    
     for(i=1;i<=n;i++)
@@ -20,8 +20,8 @@ int main(int argc, char ** argv)
 int func1(int argc, char ** argv)
 {
     int n, i, sum;
-    printf("Enter a positive number: ");
-    n = argv[1];
+    // printf("Enter a positive number: ");
+    n = 10;
     sum = 0;
     i = 1;    
     while (i <= n)

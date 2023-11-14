@@ -39,7 +39,8 @@ struct VariableInfo {
 using ResultVariableTracker = std::map<llvm::Value*, VariableInfo>;
 
 // VariableTracker分析Pass类定义
-struct VariableTracker : public llvm::AnalysisInfoMixin<VariableTracker> {
+class VariableTracker : public llvm::AnalysisInfoMixin<VariableTracker> {
+public:
   using Result = ResultVariableTracker; // 使用ResultVariableTracker作为结果类型
   // 运行分析Pass的方法
   Result run(llvm::Function &F, llvm::FunctionAnalysisManager &);
